@@ -7,3 +7,11 @@ Imports: dplyr (>= 1.0.0), lifecycle, lubridate, magrittr, purrr,
 Suggests: knitr, rmarkdown, sf, testthat, tibble, tidygraph
 License: MIT + file LICENSE
 MD5sum: 683cf35b0cff2c3c499f6f23d9bdb8bc
+
+Package: magrittr
+Version: 2.0.3
+Depends: R (>= 3.4.0)
+Suggests: covr, knitr, rlang, rmarkdown, testthat
+License: MIT + file LICENSE
+Archs: magrittr.so.dSYM
+MD5sum: d212296bc1da646f8ae2d64cb88e3465
