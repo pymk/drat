@@ -1,0 +1,9 @@
+Package: janitor
+Version: 2.1.0
+Depends: R (>= 3.1.2)
+Imports: dplyr (>= 1.0.0), lifecycle, lubridate, magrittr, purrr,
+        rlang, stringi, stringr, snakecase (>= 0.9.2), tidyselect (>=
+        1.0.0), tidyr (>= 0.7.0)
+Suggests: knitr, rmarkdown, sf, testthat, tibble, tidygraph
+License: MIT + file LICENSE
+MD5sum: 683cf35b0cff2c3c499f6f23d9bdb8bc
