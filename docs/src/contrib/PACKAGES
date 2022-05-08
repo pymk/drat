@@ -31,3 +31,16 @@ Suggests: covr, knitr, rlang, rmarkdown, testthat
 License: MIT + file LICENSE
 MD5sum: 86a110ed23536ebe26c51ff90f2a1435
 NeedsCompilation: yes
+
+Package: tidyr
+Version: 1.2.0
+Depends: R (>= 3.1)
+Imports: dplyr (>= 1.0.0), ellipsis (>= 0.1.0), glue, lifecycle,
+        magrittr, purrr, rlang, tibble (>= 2.1.1), tidyselect (>=
+        1.1.0), utils, vctrs (>= 0.3.7)
+LinkingTo: cpp11 (>= 0.4.0)
+Suggests: covr, data.table, jsonlite, knitr, readr, repurrrsive (>=
+        1.0.0), rmarkdown, testthat (>= 3.0.0)
+License: MIT + file LICENSE
+MD5sum: 232638248d7f3d4458548c95da96f28b
+NeedsCompilation: yes
