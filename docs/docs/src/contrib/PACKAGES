@@ -12,3 +12,14 @@ Suggests: bench, broom, callr, covr, DBI, dbplyr (>= 1.4.3), ggplot2,
 License: MIT + file LICENSE
 MD5sum: a5fc93c7ae984b94c2a0028ae1c4882c
 NeedsCompilation: yes
+
+Package: janitor
+Version: 2.1.0
+Depends: R (>= 3.1.2)
+Imports: dplyr (>= 1.0.0), lifecycle, lubridate, magrittr, purrr,
+        rlang, stringi, stringr, snakecase (>= 0.9.2), tidyselect (>=
+        1.0.0), tidyr (>= 0.7.0)
+Suggests: knitr, rmarkdown, sf, testthat, tibble, tidygraph
+License: MIT + file LICENSE
+MD5sum: e99bc21c487cd3b2936d6637ddc6db9b
+NeedsCompilation: no
