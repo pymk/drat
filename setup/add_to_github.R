@@ -6,7 +6,7 @@ arg_pkg <- commandArgs(trailingOnly = TRUE)
 print(arg_pkg)
 drat::insertPackage(
   file = arg_pkg,
-  repodir = ".",
+  repodir = "../.",
   location = "docs",
   commit = TRUE
 )

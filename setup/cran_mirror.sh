@@ -1,6 +1,6 @@
 #!/bin/bash
 
-working_dir="setup/"
+working_dir=$HOME/Code/minicran/setup/
 r_packages_csv="${working_dir}packages.csv"
 
 # For version numbers, see:
@@ -19,8 +19,8 @@ macos_ver_name=big-sur-arm64
 # Usage: lazygit "My commit msg"
 # https://stackoverflow.com/a/23328996
 function lazygit() {
-    git add .
-    git commit -a -m "$1"
+    git add -A
+    git commit -m "$1"
     git push
 }
 
@@ -72,16 +72,16 @@ do
         Rscript add_to_github.R ${pkg_src_dir}
         
         # Download + add to add to staging
-        #curl -L ${pkg_arm_url} -o ${pkg_arm_dir} --create-dirs
-        #Rscript add_to_github.R ${pkg_arm_dir}
+        curl -L ${pkg_arm_url} -o ${pkg_arm_dir} --create-dirs
+        Rscript add_to_github.R ${pkg_arm_dir}
 
         # Download + add to add to staging
-        #curl -L ${pkg_x86_url} -o ${pkg_x86_dir} --create-dirs
-        #Rscript add_to_github.R ${pkg_x86_dir}
+        curl -L ${pkg_x86_url} -o ${pkg_x86_dir} --create-dirs
+        Rscript add_to_github.R ${pkg_x86_dir}
 
         # Download + add to add to staging
-        #curl -L ${pkg_win_url} -o ${pkg_win_dir} --create-dirs
-        #Rscript add_to_github.R ${pkg_win_dir}
+        curl -L ${pkg_win_url} -o ${pkg_win_dir} --create-dirs
+        Rscript add_to_github.R ${pkg_win_dir}
         
         # Unzip
         # tar -xvzf "${dir_src}${pkg_src_filename}" -C ${dir_unzip}
@@ -92,5 +92,8 @@ do
 
         # add to repository with git
         # lazygit "add ${package_name} v${package_version}"
+        
+        # push to git
+        git push
     fi
 done < ${r_packages_csv}
