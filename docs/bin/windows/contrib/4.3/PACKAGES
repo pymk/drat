@@ -20,3 +20,10 @@ Imports: dplyr (>= 1.0.0), lifecycle, lubridate, magrittr, purrr,
         1.0.0), tidyr (>= 0.7.0)
 Suggests: knitr, rmarkdown, sf, testthat, tibble, tidygraph
 License: MIT + file LICENSE
+
+Package: magrittr
+Version: 2.0.3
+Depends: R (>= 3.4.0)
+Suggests: covr, knitr, rlang, rmarkdown, testthat
+License: MIT + file LICENSE
+Archs: x64
