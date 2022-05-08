@@ -23,3 +23,11 @@ Suggests: knitr, rmarkdown, sf, testthat, tibble, tidygraph
 License: MIT + file LICENSE
 MD5sum: e99bc21c487cd3b2936d6637ddc6db9b
 NeedsCompilation: no
+
+Package: magrittr
+Version: 2.0.3
+Depends: R (>= 3.4.0)
+Suggests: covr, knitr, rlang, rmarkdown, testthat
+License: MIT + file LICENSE
+MD5sum: 86a110ed23536ebe26c51ff90f2a1435
+NeedsCompilation: yes
