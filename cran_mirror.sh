@@ -56,26 +56,23 @@ do
     pkg_x86_dir="${dir_bin}macosx/contrib/${r_ver_mac}/${pkg_x86_filename}"
     pkg_win_dir="${dir_bin}windows/contrib/${r_ver_win}/${pkg_win_filename}"
 
-    # Download only if the file does not already exist
+    # Run only if package source file does not already exist in the src dir
     if ! [ -f "${dir_src}${pkg_src_filename}" ]; then
         echo "# Downloading ${package_name} v${package_version} --------------------------------------------------"
-        # Download + add to add to staging
+        # Download and to staging
         curl -L ${pkg_src_url} -o ${pkg_src_dir} --create-dirs
         Rscript ${working_dir}/add_to_github.R ${pkg_src_dir}
         
-        # Download + add to add to staging
         curl -L ${pkg_arm_url} -o ${pkg_arm_dir} --create-dirs
         Rscript ${working_dir}/add_to_github.R ${pkg_arm_dir}
 
-        # Download + add to add to staging
         curl -L ${pkg_x86_url} -o ${pkg_x86_dir} --create-dirs
         Rscript ${working_dir}/add_to_github.R ${pkg_x86_dir}
 
-        # Download + add to add to staging
         curl -L ${pkg_win_url} -o ${pkg_win_dir} --create-dirs
         Rscript ${working_dir}/add_to_github.R ${pkg_win_dir}
     fi
 done < ${r_packages_csv}
 
-# push to git
+# Push commits to git
 git push
