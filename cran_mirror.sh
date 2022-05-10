@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Working dir that is linked to GitHub repo
+# Include the trailing slash
 working_dir=$HOME/Code/minicran/
 
 # For version numbers, see:
@@ -13,7 +15,7 @@ r_ver_win=4.3
 macos_ver_name=big-sur-arm64
 
 # Should not need to change anything below this line ---------------------------
-docs_dir="${working_dir}/docs/"
+docs_dir="${working_dir}docs/"
 r_packages_csv="${working_dir}packages.csv"
 
 # Working directory and required sub-directories
@@ -21,13 +23,9 @@ cd ${docs_dir}
 
 mkdir -p "src"
 mkdir -p "bin"
-# mkdir -p "unzip"
-# mkdir -p "build"
 
 dir_src="${docs_dir}src/"
 dir_bin="${docs_dir}bin/"
-# dir_unzip="${docs_dir}unzip/"
-# dir_build="${docs_dir}build/"
 
 cran_src="https://cran.r-project.org/src/contrib/"
 cran_arm="https://cran.r-project.org/bin/macosx/${macos_ver_name}-arm64/contrib/${r_ver_mac}/"
