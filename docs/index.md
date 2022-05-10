@@ -1,37 +1,55 @@
-## Welcome to GitHub Pages
+## Private R Package Repository
 
-You can use the [editor on GitHub](https://github.com/pymk/minicran/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+The goal of this project is to set up an automated way to add multiple version of an R package to a private GitHub repo using scripts and `drat` package.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This is a test project and not meant to be used in production.
 
-### Markdown
+---
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Workflow
 
-```markdown
-Syntax highlighted code block
+The workflow consists of:
 
-# Header 1
-## Header 2
-### Header 3
+1. Updating a CSV file with the name of the R package and the CRAN version of interest.
+2. Running a shell script
 
-- Bulleted
-- List
+The script will automatically download the requested packages and uploads them to the GitHub repo.
 
-1. Numbered
-2. List
+---
 
-**Bold** and _Italic_ and `Code` text
+### Setup
 
-[Link](url) and ![Image](src)
+There are two workhorse behind this automation: the `drat` R package and the shell script.
+
+The `drat` package does the heavy lifting for creating the CRAN-style GitHub repo and the required files. The script does the downloading and running the `drat` function.
+
+- First, set up a GitHub repo according to [these instructions](https://eddelbuettel.github.io/drat/vignettes/dratstepbystep/).
+- Secondly, git needs to be configured to connect to the GitHub account.
+- And finally, the `cran_mirror.sh` file should be updated. Specifically, the `working_dir` variable should point to the directory that is linked to the GitHub repo that will be used.
+
+The "clean" structure would look like this:
+
+```
+├── add_to_github.R
+├── cran_mirror.sh
+├── docs
+│  ├── _config.yml
+│  ├── index.md
+├── packages.csv
+└── README.md
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+All the other files and directories in [my example repo](https://github.com/pymk/minicran) (e.g. "PACKAGES", "bin", "src", etc) will be created as part of the process.
 
-### Jekyll Themes
+---
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/pymk/minicran/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Usage
 
-### Support or Contact
+Upon updating the `packages.csv` file with the desired R package name and version, run the `cran_mirror.sh` in terminal. Once the process is complete, users can download R packages from the repo with:
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+```r
+install.packages("<package-name>", repos = "https://<github-account>.github.io/<repo-name>")
+
+# Example
+# install.packages("zoo", repos = "https://pymk.github.io/minicran")
+```
