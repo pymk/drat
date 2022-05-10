@@ -1,8 +1,6 @@
 #!/bin/bash
 
 working_dir=$HOME/Code/minicran/
-docs_dir="${working_dir}/docs/"
-r_packages_csv="${working_dir}packages.csv"
 
 # For version numbers, see:
 # https://cran.r-project.org/bin/macosx/big-sur-arm64/contrib/
@@ -15,15 +13,8 @@ r_ver_win=4.3
 macos_ver_name=big-sur-arm64
 
 # Should not need to change anything below this line ---------------------------
-
-# Create a function for git workflow
-# Usage: lazygit "My commit msg"
-# https://stackoverflow.com/a/23328996
-function lazygit() {
-    git add -A
-    git commit -m "$1"
-    git push
-}
+docs_dir="${working_dir}/docs/"
+r_packages_csv="${working_dir}packages.csv"
 
 # Working directory and required sub-directories
 cd ${docs_dir}
@@ -85,18 +76,8 @@ do
         # Download + add to add to staging
         curl -L ${pkg_win_url} -o ${pkg_win_dir} --create-dirs
         Rscript ${working_dir}/add_to_github.R ${pkg_win_dir}
-        
-        # Unzip
-        # tar -xvzf "${dir_src}${pkg_src_filename}" -C ${dir_unzip}
-        # Build
-        # R CMD INSTALL --build "${dir_unzip}${package_name}"
-        # Move built file
-        # mv "${docs_dir}${pkg_id}.tgz" "${dir_build}"
-
-        # add to repository with git
-        # lazygit "add ${package_name} v${package_version}"
-        
-        # push to git
-        git push
     fi
 done < ${r_packages_csv}
+
+# push to git
+git push
