@@ -10,7 +10,7 @@ working_dir=$HOME/Code/minicran/
 r_ver_mac=4.2
 r_ver_win=4.3
 
-# For macOS version names, see:
+# For version names for ARM64-based macOS chips (like M1), see:
 # https://cran.r-project.org/bin/macosx/
 macos_ver_name=big-sur-arm64
 
